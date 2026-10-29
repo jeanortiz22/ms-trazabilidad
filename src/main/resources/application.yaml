@@ -1,0 +1,13 @@
+server:
+    port: 8083
+
+spring:
+  application:
+    name: ms-trazabilidad
+    mongodb:
+      uri: mongodb://localhost:27017/trazabilidad
+      representation:
+        uuid: standard
+jwt:
+    secret: "vumHkVc8KXQLMq5XwUH62RbzhoJ7jn7DRRcCM9F49is="
+    expiration:  3600000
