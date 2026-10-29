@@ -1,4 +1,11 @@
-package com.pragma.plazoleta.infraestructure.out.entity.repository;
+package com.pragma.plazoleta.infraestructure.out.mongodb.repository;
 
-public interface ITrazabilidadRepository {
+import com.pragma.plazoleta.infraestructure.out.mongodb.document.TrazabilidadDocument;
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import java.util.List;
+import java.util.UUID;
+
+public interface ITrazabilidadRepository extends MongoRepository<TrazabilidadDocument, UUID> {
+    List<TrazabilidadDocument> findByIdPedidoAndIdClienteOrderByFechaAsc(UUID idPedido, UUID idCliente);
 }
