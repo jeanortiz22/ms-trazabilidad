@@ -1,4 +1,6 @@
 package com.pragma.plazoleta.application.dto.response;
 
-public class TrazabilidadResponse {
+import java.time.LocalDateTime;
+
+public record TrazabilidadResponse (String estadoAnterior, String estadoNuevo, LocalDateTime fecha){
 }
