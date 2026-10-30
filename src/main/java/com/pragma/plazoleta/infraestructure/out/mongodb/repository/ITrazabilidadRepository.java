@@ -8,4 +8,6 @@ import java.util.UUID;
 
 public interface ITrazabilidadRepository extends MongoRepository<TrazabilidadDocument, UUID> {
     List<TrazabilidadDocument> findByIdPedidoAndIdClienteOrderByFechaAsc(UUID idPedido, UUID idCliente);
+    List<TrazabilidadDocument> findByIdRestauranteAndIdPropietario(UUID idRestaurante, UUID idPropietario);
+
 }

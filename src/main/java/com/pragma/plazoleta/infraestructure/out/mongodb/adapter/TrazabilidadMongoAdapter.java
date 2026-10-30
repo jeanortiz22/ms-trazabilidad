@@ -31,4 +31,10 @@ public class TrazabilidadMongoAdapter implements ITrazabilidadPersistencePort {
                 .toList();
     }
 
+    @Override
+    public List<Trazabilidad> buscarPorRestauranteYPropietario(UUID idRestaurante, UUID idPropietario) {
+        return trazabilidadRepository.findByIdRestauranteAndIdPropietario(idRestaurante, idPropietario)
+                .stream().map(trazabilidadDocumentMapper::toDomain).toList();
+    }
+
 }
