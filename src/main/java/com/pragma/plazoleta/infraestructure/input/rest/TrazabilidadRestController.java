@@ -1,6 +1,7 @@
 package com.pragma.plazoleta.infraestructure.input.rest;
 
 import com.pragma.plazoleta.application.dto.request.RegistrarTrazabilidadRequest;
+import com.pragma.plazoleta.application.dto.response.ReporteEficienciaResponse;
 import com.pragma.plazoleta.application.dto.response.TrazabilidadResponse;
 import com.pragma.plazoleta.application.handler.ITrazabilidadHandler;
 import jakarta.validation.Valid;
@@ -34,5 +35,13 @@ public class TrazabilidadRestController {
                                                                          Authentication authentication) {
         UUID idCliente = UUID.fromString(authentication.getName());
         return ResponseEntity.ok(trazabilidadHandler.consultarHistorial(idPedido, idCliente));
+    }
+
+    @PreAuthorize("hasAnyRole('PROPIETARIO')")
+    @GetMapping("/eficiencia")
+    public ResponseEntity<ReporteEficienciaResponse> calcularEficiencia(@RequestParam UUID idRestaurante,
+                                                                        Authentication authentication) {
+        UUID idPropietario = UUID.fromString(authentication.getName());
+        return ResponseEntity.ok(trazabilidadHandler.calcularEficiencia(idRestaurante, idPropietario));
     }
 }

@@ -1,8 +1,10 @@
 package com.pragma.plazoleta.application.handler.impl;
 
 import com.pragma.plazoleta.application.dto.request.RegistrarTrazabilidadRequest;
+import com.pragma.plazoleta.application.dto.response.ReporteEficienciaResponse;
 import com.pragma.plazoleta.application.dto.response.TrazabilidadResponse;
 import com.pragma.plazoleta.application.handler.ITrazabilidadHandler;
+import com.pragma.plazoleta.application.mapper.EficienciaResponseMapper;
 import com.pragma.plazoleta.application.mapper.TrazabilidadRequestMapper;
 import com.pragma.plazoleta.application.mapper.TrazabilidadResponseMapper;
 import com.pragma.plazoleta.domain.api.ITrazabilidadServicePort;
@@ -19,6 +21,7 @@ public class TrazabilidadHandler implements ITrazabilidadHandler {
     private final ITrazabilidadServicePort trazabilidadServicePort;
     private final TrazabilidadResponseMapper trazabilidadResponseMapper;
     private final TrazabilidadRequestMapper trazabilidadRequestMapper;
+    private final EficienciaResponseMapper eficienciaResponseMapper;
 
     @Override
     public void registrar(RegistrarTrazabilidadRequest request) {
@@ -33,4 +36,8 @@ public class TrazabilidadHandler implements ITrazabilidadHandler {
                 .toList();
     }
 
+    @Override
+    public ReporteEficienciaResponse calcularEficiencia(UUID idRestaurante, UUID idPropietario) {
+        return eficienciaResponseMapper.toResponse(trazabilidadServicePort.calcularEficiencia(idRestaurante, idPropietario));
+    }
 }

@@ -1,4 +1,9 @@
 package com.pragma.plazoleta.application.dto.response;
 
-public record ReporteEficienciaResponse() {
+import java.util.List;
+
+public record ReporteEficienciaResponse(
+        List<EficienciaPedidoResponse> pedidos,
+        List<RankingEmpleadoResponse> ranking
+) {
 }

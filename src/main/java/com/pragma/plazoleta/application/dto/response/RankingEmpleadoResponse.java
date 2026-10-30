@@ -1,4 +1,10 @@
 package com.pragma.plazoleta.application.dto.response;
 
-public record RankingEmpleadoResponse() {
+import java.util.UUID;
+
+public record RankingEmpleadoResponse(
+        UUID idEmpleado,
+        double tiempoMedioSegundos,
+        int pedidosEntregados
+) {
 }
