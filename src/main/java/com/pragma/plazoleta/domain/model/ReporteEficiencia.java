@@ -1,4 +1,9 @@
 package com.pragma.plazoleta.domain.model;
 
-public record ReporteEficiencia() {
+import java.util.List;
+
+public record ReporteEficiencia(
+        List<EficienciaPedido> pedidos,
+        List<RankingEmpleado> ranking
+) {
 }
